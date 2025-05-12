@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import {FiMail, FiLock, FiEye, FiEyeOff} from "react-icons/fi"
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate()
   const [isVisiblePassword, setIsVisiblePassword]=useState(false);
   const [input, setInput]=useState({
     email:"",
@@ -11,7 +13,7 @@ function Login() {
     e.preventDefault();
   }
   return (
-    <div className="bg-white border border-white shadow w-[200px] h-[350px] md:w-[350px] rounded-lg p-7">
+    <div className="bg-white border border-white shadow w-[200px] h-[350px] md:w-[350px] rounded-2xl p-7">
       <div>
         <h2 className='text-lg font-rubik font-bold'>Log in</h2>
       </div>
@@ -31,6 +33,7 @@ function Login() {
             focus:ring-blue-500
             peer
             font-rubik
+            text-gray-500
             '
           />
           
@@ -51,6 +54,7 @@ function Login() {
             focus:placeholder-transparent
             peer
             font-rubik
+            text-gray-500
             ' 
           />
           <FiLock className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 peer-focus:text-blue-400'/>
@@ -63,7 +67,7 @@ function Login() {
         </div>
         <div>
         <button type='submit' className='w-full bg-blue-500 text-white rounded-md py-2 font-rubik'>Login</button>
-        <p className='text-base font-rubik'>Dont have an account? <span className='text-blue-500 cursor-pointer'>sign up</span></p>
+        <p className='text-xs font-rubik text-center'>Dont have an account? <span className='text-blue-500 cursor-pointer' onClick={()=>navigate("/auth/signup")}>sign up</span></p>
         </div>
       </form>
       
