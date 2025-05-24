@@ -49,12 +49,12 @@ export const SharedPageHeader=()=> {
             <RiSearch2Line className="absolute top-1/2 left-3 transform -translate-y-1/2 text-sm font-bold" />
           </div>
           <button className="border border-stone-400 rounded-sm h-[60%] w-[20%] flex justify-center items-center cursor-pointer hover:bg-stone-200">
-            <IoFilter className="text-stone-500 m-0.5 text-sm" />
-            <span className="text-xs text-stone-500 m-0.5">Filter</span>
+            <IoFilter className="text-stone-900 m-0.5 text-sm" />
+            <span className="text-xs text-stone-900 m-0.5">Filter</span>
           </button>
           <button className="border border-stone-400 rounded-sm h-[60%] w-[20%] flex justify-center items-center cursor-pointer hover:bg-stone-200">
-            <HiSortDescending className="text-stone-500 m-0.5 text-sm" />
-            <span className="text-xs text-stone-500 m-0.5">Sort</span>
+            <HiSortDescending className="text-stone-900 m-0.5 text-sm" />
+            <span className="text-xs text-stone-900 m-0.5">Sort</span>
           </button>
           <span className="text-stone-500">|</span>
           <div className="flex -space-x-4">
