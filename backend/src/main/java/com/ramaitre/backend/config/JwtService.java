@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    private final String SECRET_KEY = "I see dead people";
+    private final String SECRET_KEY = "OZ1H3Xtz2xgeO7Wb9Y5k9lxlt2z6JQLY6ybrnT1xdEysmHIT2XjuPs08UzloaxPb";
 
     public String extractEmail(String token){
         return extractClaim(token, Claims::getSubject);
@@ -26,7 +26,7 @@ public class JwtService {
                 .parserBuilder()
                 .setSigningKey(getSingingKey())
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
     public <T>T extractClaim(String token, Function<Claims, T> claimResolver){

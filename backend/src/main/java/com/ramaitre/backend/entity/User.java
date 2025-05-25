@@ -1,10 +1,8 @@
 package com.ramaitre.backend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,10 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="app_user")
+@Builder
 public class User implements UserDetails {
     @Id
-    @GeneratedValue()
-    private String user_id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_user_seq")
+    @SequenceGenerator(name = "app_user_seq", sequenceName = "app_user_seq", allocationSize = 1)
+    private Long user_id;
     private String name;
     private String email;
     private String password;

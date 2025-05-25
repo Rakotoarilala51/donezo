@@ -12,7 +12,7 @@ export default function TaskCard({ task }) {
         <span className="text-xs text-stone-500">{task.last_updated}</span>
       </div>
       <div className="flex items-center ml-2">
-        <span className="text-sm font-semibold text-black truncate w-40">
+        <span className="text-sm font-medium text-black truncate w-40">
           {task.task_name}
         </span>
         <span className="ml-auto p-2">
