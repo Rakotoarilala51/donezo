@@ -83,6 +83,11 @@
 			<artifactId>jakarta.servlet-api</artifactId>
 			<version>6.0.0</version> <scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.2.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
