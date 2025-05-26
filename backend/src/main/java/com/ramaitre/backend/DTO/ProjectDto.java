@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class ProjectDto {
-    private Long project_id;
-    private String project_name;
-    private String Tags;
+    private Long projectId;
+    private String projectName;
+    private String projectTag;
+    private String projectDescription;
 }

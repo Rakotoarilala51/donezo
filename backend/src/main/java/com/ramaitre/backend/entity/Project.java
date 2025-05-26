@@ -11,7 +11,8 @@ import lombok.Setter;
 public abstract class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long project_id;
-    private String project_name;
-    private String project_tags;
+    private Long projectId;
+    private String projectName;
+    private String projectTags;
+    private String projectDescription;
 }
