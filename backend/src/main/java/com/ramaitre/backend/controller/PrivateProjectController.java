@@ -8,11 +8,9 @@ import com.ramaitre.backend.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -30,5 +28,23 @@ public class PrivateProjectController {
         privateProject.setUser(user);
         PrivateProject savedPrivateProject=privateProjectService.createPrivateProject(privateProject);
         return new ResponseEntity<>(savedPrivateProject, HttpStatus.CREATED);
+    }
+    //get all private project
+    @GetMapping
+    public ResponseEntity<List<PrivateProject>> getPrivateProject(){
+        User user = userService.getConnectedUser();
+        List<PrivateProject> privateProjects=privateProjectService.getPrivateProject(user);
+        return new ResponseEntity<>(privateProjects, HttpStatus.OK);
+    }
+    //get one private project
+    @GetMapping("{id}")
+    public ResponseEntity<PrivateProject> getPrivateProjectById(@PathVariable Long id){
+        PrivateProject project = privateProjectService.getPrivateProjectById(id);
+        return new ResponseEntity<>(project, HttpStatus.OK);
+    }
+    @GetMapping("/name/{name}")
+    public ResponseEntity<PrivateProject> getPrivateProjectByName(@PathVariable String name){
+        PrivateProject project = privateProjectService.getPrivateProjectByName(name);
+        return new ResponseEntity<>(project, HttpStatus.OK);
     }
 }
