@@ -26,7 +26,7 @@ export default function SharedPage() {
           <Route
             Icon={RxDragHandleDots2}
             isSelected={
-              location.pathname.toLowerCase() == "main/sharedPage/punchLive"
+              location.pathname.toLowerCase() === "main/sharedPage/punchLive"
             }
             Title={"Punch Live"}
             onClick={() => navigate("sharedpage")}
@@ -34,14 +34,14 @@ export default function SharedPage() {
           <Route
             Icon={RxDragHandleDots2}
             isSelected={
-              location.pathname.toLowerCase() == "main/sharedPage/punchLive"
+              location.pathname.toLowerCase() === "main/sharedPage/punchLive"
             }
             Title={"Leek Legacy"}
           />
           <Route
             Icon={RxDragHandleDots2}
             isSelected={
-              location.pathname.toLowerCase() == "main/sharedPage/punchLive"
+              location.pathname.toLowerCase() === "main/sharedPage/punchLive"
             }
             Title={"Candy Bay"}
           />
