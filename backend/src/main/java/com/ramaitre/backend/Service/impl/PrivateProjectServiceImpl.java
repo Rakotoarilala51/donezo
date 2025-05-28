@@ -38,5 +38,19 @@ public class PrivateProjectServiceImpl implements PrivateProjectService {
         return privateProjectRepository.findByProjectName(projectName);
     }
 
+    @Override
+    public PrivateProject setPrivateProject(PrivateProject privateProject) {
+        PrivateProject project = privateProjectRepository.findById(privateProject.getProjectId()).get();
+        project.setProjectDescription(privateProject.getProjectDescription());
+        project.setProjectName(privateProject.getProjectName());
+        project.setProjectTags(privateProject.getProjectTags());
+        return privateProjectRepository.save(project);
+    }
+
+    @Override
+    public void deletePrivateProject(PrivateProject project) {
+        privateProjectRepository.delete(project);
+    }
+
 
 }

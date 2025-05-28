@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -42,9 +41,22 @@ public class PrivateProjectController {
         PrivateProject project = privateProjectService.getPrivateProjectById(id);
         return new ResponseEntity<>(project, HttpStatus.OK);
     }
+    //get one private project by name
     @GetMapping("/name/{name}")
     public ResponseEntity<PrivateProject> getPrivateProjectByName(@PathVariable String name){
         PrivateProject project = privateProjectService.getPrivateProjectByName(name);
         return new ResponseEntity<>(project, HttpStatus.OK);
+    }
+    //update a private project
+    @PutMapping
+    public ResponseEntity<PrivateProject> setPrivateProject(@RequestBody PrivateProject project){
+        PrivateProject privateProject = privateProjectService.setPrivateProject(project);
+        return new ResponseEntity<>(privateProject, HttpStatus.OK);
+    }
+    //Delete a private project
+    @DeleteMapping
+    public ResponseEntity<String> deletPrivateProject(@RequestBody PrivateProject project){
+        privateProjectService.deletePrivateProject(project);
+        return new ResponseEntity<>("Deleted successfully", HttpStatus.OK);
     }
 }

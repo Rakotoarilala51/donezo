@@ -10,4 +10,6 @@ public interface PrivateProjectService {
     List<PrivateProject> getPrivateProject(User user);
     PrivateProject getPrivateProjectById(Long id);
     PrivateProject getPrivateProjectByName(String projectName);
+    PrivateProject setPrivateProject(PrivateProject privateProject);
+    void deletePrivateProject(PrivateProject project);
 }

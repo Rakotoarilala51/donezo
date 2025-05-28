@@ -1,5 +1,6 @@
 package com.ramaitre.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,7 @@ public class User implements UserDetails {
     private Long user_id;
     private String name;
     private String email;
+    @JsonIgnore
     private String password;
     private Role role;
 
