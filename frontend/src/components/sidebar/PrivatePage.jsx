@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import {RxDragHandleDots2} from 'react-icons/rx'
+import { useNavigate } from 'react-router-dom'
 
 const PrivatePage =()=> {
     const [enroll, setEnroll] = useState(false)
+    const navigate = useNavigate();
   return (
     <div className='py-3 font-rubik'>
         <div className='flex flex-col'>
@@ -19,7 +21,7 @@ const PrivatePage =()=> {
 
             </div>
             <div className={`p-3 ${enroll? "": "hidden"}`}>
-                <Route Icon={RxDragHandleDots2} isSelected={true} Title={"Punch Live"}/>
+                <Route Icon={RxDragHandleDots2} isSelected={true} Title={"Punch Live"} onClick={()=>navigate("privatepage")}/>
                 <Route Icon={RxDragHandleDots2} isSelected={false} Title={"Leek Legacy"}/>
                 <Route Icon={RxDragHandleDots2} isSelected={false} Title={"Candy Bay"}/>
 
@@ -31,12 +33,14 @@ const PrivatePage =()=> {
     </div>
   )
 }
-const Route = ({Icon, Title, isSelected})=>{
+const Route = ({Icon, Title, isSelected, onClick})=>{
     return(
       <div className='relative'>
       <button className={`flex items-center justify-start rounded-xl gap-2 w-full px-2 py-1.5 text-sm transition-all ${
         isSelected?"bg-white border border-indigo-300":"hover:bg-stone-300 bg-transparent shadow-none"
-      }`}> 
+      }`}
+      onClick={onClick}
+      > 
         <Icon/>
         <span>{Title}</span>
       </button>

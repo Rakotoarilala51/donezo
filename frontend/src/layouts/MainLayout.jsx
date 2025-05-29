@@ -2,6 +2,7 @@ import React from 'react'
 import  Sidebar  from '../components/sidebar/Sidebar'
 import { Outlet } from 'react-router-dom'
 import Header from '../components/Main/Header'
+import Modal from '../components/Main/Modal'
 
 export const MainLayout = () => {
   return (
@@ -11,6 +12,7 @@ export const MainLayout = () => {
             <div className='bg-white rounded-lg shadow pb-4 h-[200vh]'>
             <Header/>
             <Outlet/>
+            <Modal/>
             </div>
             
         </div>

@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { PiKanbanFill } from "react-icons/pi";
 import { FiList } from "react-icons/fi";
 import { FaRegCalendarMinus } from "react-icons/fa";
-import {RiSearch2Line} from "react-icons/ri"
-import {IoFilter} from "react-icons/io5"
-import {HiSortDescending} from "react-icons/hi"
+import { RiSearch2Line } from "react-icons/ri";
+import { IoFilter } from "react-icons/io5";
+import { HiSortDescending } from "react-icons/hi";
 
-export const PrivatePageHeader=()=> {
+export const PrivatePageHeader = () => {
+  const menuRef = useRef(null);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target))
+        setShowDropdown(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   return (
     <div className="w-full h-[100px] pt-0 flex justify-between border-b border-stone-300">
       <div className="pl-2 flex flex-col justify-between">
@@ -18,10 +30,29 @@ export const PrivatePageHeader=()=> {
           </p>
         </div>
 
-        <div className="pb-0 flex justify-between space-x-2">
-          <button className="border border-stone-400 rounded-sm h-[60%] w-7 flex justify-center items-center cursor-pointer hover:bg-stone-200">
+        <div className="pb-0 flex justify-between space-x-2 relative">
+          <button className="border border-stone-400 rounded-sm h-[60%] w-7 flex justify-center items-center cursor-pointer hover:bg-stone-200" onClick={()=>setShowDropdown((prev) => !prev)}>
             <BsThreeDots className="m-2 text-xs font-bold" />
           </button>
+          {showDropdown && (
+            <div
+              ref={menuRef}
+              className="absolute z-50 top-[35px] left-0 bg-white border border-stone-300 rounded-md shadow-md w-40"
+            >
+              <ul className="text-sm text-gray-500 py-2">
+                <li className="px-4 py-2 hover:bg-stone-100 cursor-pointer">
+                  Add Tasks
+                </li>
+                <li className="px-4 py-2 hover:bg-stone-100 cursor-pointer">
+                  Archive
+                </li>
+                <li className="px-4 py-2 hover:bg-stone-100 cursor-pointer">
+                  Settings
+                </li>
+              </ul>
+            </div>
+          )}
+
           <button className="border border-stone-600 rounded-sm h-[60%] w-[30%] flex justify-center items-center cursor-pointer hover:bg-stone-200">
             <PiKanbanFill className="text-stone-600 m-0.5" />
             <span className="text-xs text-stone-600 m-0.5">kanban</span>
@@ -60,6 +91,4 @@ export const PrivatePageHeader=()=> {
       </div>
     </div>
   );
-}
-
-
+};
