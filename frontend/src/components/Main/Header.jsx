@@ -3,7 +3,7 @@ import { FiPlus, FiGlobe } from "react-icons/fi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
 
-function Header() {
+function Header({setOpenModal}) {
   const location = useLocation();
   const path = location.pathname.split("/").join(">");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -15,6 +15,10 @@ function Header() {
     document.addEventListener("mousedown", handleClickOutside)
     return ()=>document.removeEventListener("mousedown", handleClickOutside);
   }, [])
+  const openPrivate = ()=>{
+    setOpenModal(true);
+    setShowDropdown(false);
+  }
 
   return (
     <div className="border-b border-stone-300 flex justify-between">
@@ -29,11 +33,11 @@ function Header() {
           showDropdown && (
             <div ref={menuRef} className="absolute z-50 top-[50px] bg-white border-stone-300 rounded-md shadow-md w-40">
                        <ul className="text-sm text-gray-500 py-2">
-                <li className="px-4 py-2 hover:bg-stone-100 cursor-pointer" onClick={()=>console.log("hi")}>
-                  Add Tasks
+                <li className="px-4 py-2 hover:bg-stone-100 cursor-pointer" onClick={()=>openPrivate()}>
+                  Private project
                 </li>
                 <li className="px-4 py-2 hover:bg-stone-100 cursor-pointer">
-                  Archive
+                  Shared project
                 </li>
                 <li className="px-4 py-2 hover:bg-stone-100 cursor-pointer">
                   Settings
